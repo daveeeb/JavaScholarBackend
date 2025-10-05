@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"mvc.model","l":"ApiException"},{"p":"mvc.model","l":"Author"},{"p":"mvc.controller","l":"AuthorController"},{"p":"mvc.view","l":"AuthorView"},{"p":"mvc.model","l":"GoogleScholarAPI"},{"p":"mvc.model","l":"Interest"},{"p":"org.example","l":"Main"}];updateSearchResults();
