@@ -1,4 +1,7 @@
 package mvc.model;
 
-public class ApiException {
+public class ApiException extends Exception {
+    public ApiException(String message) {
+        super(message);
+    }
 }

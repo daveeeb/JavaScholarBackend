@@ -1,17 +1,36 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import mvc.controller.AuthorController;
+import mvc.model.GoogleScholarAPI;
+import mvc.view.AuthorView;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+import java.io.IOException;
+
+/**
+ * @author Javier David Barraza Ureña ID 3303
+ * Controller class in the MVC pattern.
+ * The main entry point of the application.
+ * This class sets up the MVC components and initiates the author search process.
+ */
+
+public class Main {
+    /**
+     * The main method where the application execution begins.
+     * It initializes the view, model, and controller, and starts a search for a predefined author ID.
+     * @param args Command-line arguments (not used in this application).
+     */
+    public static void main(String[] args) {
+        String authorId = "LSsXyncAAAAJ";
+        try {
+            AuthorView view = new AuthorView();
+            GoogleScholarAPI model = new GoogleScholarAPI();
+            AuthorController controller = new AuthorController(view, model);
+
+            System.out.println("Looking author with ID: " + authorId);
+            controller.searchAuthor(authorId);
+        } catch (IOException e) {
+            System.err.println("ERROR: The application could not be started due to an I/O problem");
+            e.printStackTrace();
         }
     }
 }
