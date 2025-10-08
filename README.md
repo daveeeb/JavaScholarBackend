@@ -41,27 +41,6 @@ Uses a Data Access Object (DAO) pattern to store and retrieve authors and articl
  - Missing author or article data
  - HTTP response codes other than 200
 
-# System Architecture
-  MVC Structure
-
-  mvc/
-├── model/
-│   ├── GoogleScholarAPI.java     // Handles API communication & JSON parsing
-│   ├── Author.java               // Represents author data
-│   ├── Article.java              // Represents article data
-│   ├── Interest.java             // Represents author interests
-│   ├── ApiException.java         // Custom exception for API errors
-│   ├── ArticleDAO.java           // Database operations for articles
-│
-├── view/
-│   ├── AuthorView.java           // Displays author and article information
-│
-├── controller/
-│   ├── MainController.java       // Coordinates model and view logic
-│
-└── Main.java                     // Entry point for execution
-
-   
 # Project Relevance
 This project solves the problem of manual, time-consuming academic data collection. It facilitates efficient, large-scale literature reviews and provides quantitative data that is often difficult or impossible to obtain directly from public interfaces.
 
