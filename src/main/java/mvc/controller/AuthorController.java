@@ -1,9 +1,12 @@
 package mvc.controller;
 
+import mvc.model.*;
 import mvc.model.Author;
 import mvc.model.GoogleScholarAPI;
 import mvc.view.AuthorView;
 import java.io.IOException;
+import java.util.List;
+
 import mvc.model.ApiException;
 
 /**
@@ -19,18 +22,25 @@ import mvc.model.ApiException;
 public class AuthorController{
     private final AuthorView view;
     private final GoogleScholarAPI model;
+    private final ArticleDAO articleDAO;
 
     public AuthorController(AuthorView view, GoogleScholarAPI model) {
         this.view = view;
         this.model = model;
+        this.articleDAO = new ArticleDAO();
+
     }
 
     public void searchAuthor(String authorId) {
         try {
             Author author = model.getAuthorProfile(authorId);
             view.displayAuthorDetails(author);
+
+            List<Article> articles = model.getArticles(authorId);
+            articleDAO.saveArticles(authorId, articles);
+
         } catch (IOException | ApiException e) {
-            view.displayError("Error Can not get author data: " + e.getMessage());
+            view.displayError(e.getMessage());
         }
     }
 }

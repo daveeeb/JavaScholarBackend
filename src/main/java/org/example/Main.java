@@ -20,17 +20,22 @@ public class Main {
      * @param args Command-line arguments (not used in this application).
      */
     public static void main(String[] args) {
-        String authorId = "LSsXyncAAAAJ";
+        String[] authorIds = {"LSsXyncAAAAJ", "04GHe_kAAAAJ"};
+
         try {
             AuthorView view = new AuthorView();
             GoogleScholarAPI model = new GoogleScholarAPI();
             AuthorController controller = new AuthorController(view, model);
 
-            System.out.println("Looking author with ID: " + authorId);
-            controller.searchAuthor(authorId);
+            for (String authorId : authorIds) {
+                System.out.println("Looking author with ID: " + authorId);
+                controller.searchAuthor(authorId);
+            }
+
         } catch (IOException e) {
-            System.err.println("ERROR: The application could not be started due to an I/O problem");
+            System.err.println("ERROR: Could not start application due to I/O problem");
             e.printStackTrace();
         }
     }
+
 }
